@@ -2,8 +2,8 @@ var chalk = require('chalk');
 var mongoose = require( 'mongoose' );
 var bcrypt=require('bcrypt');
 var SALT_WORK_FACTOR = 10;
-var dbURI = 'mongodb://127.0.0.1/storiesdb';
-//var dbURI = 'mongodb://edu:edu@ds015879.mlab.com:15879/edurekadb';
+//var dbURI = 'mongodb://127.0.0.1/storiesdb';
+var dbURI = 'mongodb://edu:edu@ds015879.mlab.com:15879/edurekadb';
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function () {
   console.log(chalk.yellow('Mongoose connected to ' + dbURI));

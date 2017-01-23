@@ -1,4 +1,4 @@
-# a node.js explaining the following :----
+# a node.js program using :----
    express.js
    Middleware- body-parser, static, express-session, Handlebars
    Bootstrap 
