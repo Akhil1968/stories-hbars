@@ -3,9 +3,9 @@
     {{#each stories}}
         <div class="well">
             <h1>{{this.title}}</h1>
-            <h4>Created by <code>{{this.author}}</code> on <code> {{this.created_at}} </code></h4><br>
-            Summary: <p>{{this.summary}}</p> 
-           <a href='/stories/{{this.slug}}'> <b>Full story</b></a>
+            <h6>Created by <code>{{this.author}}</code> on <code> {{this.created_at}} </code></h6><br>
+            <h6>Summary:</h6> <p><code>{{this.summary}}</code></p>
+            <a href='/stories/{{this.slug}}'> <b>Full story</b></a>
         </div>
     {{/each}}
 {{else}}
