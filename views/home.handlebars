@@ -1,41 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Stories</title>
-{{>head}}
-</head>
-<body>
-    <div id="wrapper">
-        {{>sidebarMenu}}
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                       <a href="#menu-toggle" class="btn btn-success" id="menu-toggle">Toggle Screen</a><br/><br/>
-                        {{#if hasStories }}
-                           {{#each stories}}
-                               <h1>{{this.title}}</h1>
-                               <h4>Created by <code>{{this.author}} on {{this.created_at}} </code></h4><br/><br/>
-                               <p>{{this.summary}}  <b>- Read the full story <a href='/stories/{{this.slug}}'>here</a> </b></p>
-                               <br/><br/>
-                           {{/each}}
-                        {{else}}
-                            <h1>There are no stories to show. You can post your own story if you wish.</h1>
-                       {{/if}}
-                    </div>
-                </div>
-            </div>
+{{#if hasStories }}
+    {{#each stories}}
+        <div class="well">
+            <h1>{{this.title}}</h1>
+            <h4>Created by <code>{{this.author}}</code> on <code> {{this.created_at}} </code></h4><br>
+            Summary: <p>{{this.summary}}</p> 
+           <a href='/stories/{{this.slug}}'> <b>Full story</b></a>
         </div>
-    </div>
-    {{>jsIncludes}}
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+    {{/each}}
+{{else}}
+    <h1>There are no stories to show. You can post your own story if you wish.</h1>
+{{/if}}
 
-</body>
-
-</html>

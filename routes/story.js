@@ -3,11 +3,11 @@ var Story = mongoose.model('Story');
 
 
 exports.stories = function(req,res){
-    var loggedin;
+    var loggedout;
     if (typeof(req.session.loggedIn) == 'undefined'){
-        loggedin = true;
+        loggedout = true;
     }else{
-        loggedin = false;
+        loggedout = false;
     }
 
     Story.find({}, function(err, stories){
@@ -17,7 +17,7 @@ exports.stories = function(req,res){
       }else{
         hasStories = true;
       }
-      res.render('home.handlebars',{hasStories: hasStories, stories: stories, loggedin: loggedin});
+      res.render('home.handlebars',{hasStories: hasStories, stories: stories, loggedout: loggedout});
     });
 }
 
@@ -56,15 +56,15 @@ exports.addStory = function(req,res){
 
 exports.getStory = function(req,res){
    var url = req.params.story;
-   var loggedin;
+   var loggedout;
    if (typeof(req.session.loggedIn) == 'undefined'){
-        loggedin = true;
+        loggedout = true;
    }else{
-        loggedin = false;
+        loggedout = false;
    }
 
    Story.findOne({slug:url}, function(err, story){
-           res.render('story.handlebars', {story:story, loggedin:loggedin});
+           res.render('story.handlebars', {story:story, loggedout:loggedout});
    });
 }
 

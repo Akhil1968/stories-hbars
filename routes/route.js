@@ -3,24 +3,24 @@ var Story = mongoose.model( 'Story' );
 
 exports.index = function(req, res){
     console.log("Route index.handlebars");
-    var loggedin;
+    var loggedout;
     if (typeof(req.session.loggedIn) == 'undefined'){
-        loggedin = true;
+        loggedout = true;
     }else{
-        loggedin = false;
+        loggedout = false;
     }
-    res.render('index.handlebars', {loggedin:loggedin});
+    res.render('index.handlebars', {loggedout:loggedout});
 }
 
 
 exports.techStack = function(req, res){
-    var loggedin;
+    var loggedout;
     if (typeof(req.session.loggedIn) == 'undefined'){
-        loggedin = true;
+        loggedout = true;
     }else{
-        loggedin = false;
+        loggedout = false;
     }
-    res.render('techStack.handlebars', {loggedin:loggedin});
+    res.render('techStack.handlebars', {loggedout:loggedout});
   }
 
 exports.home = function(req, res){
@@ -30,26 +30,26 @@ exports.home = function(req, res){
 }
 
 exports.register = function(req, res){
-  res.render('register.handlebars');
+  res.render('register.handlebars', {layout:'layout2'});
 }
 
 exports.login = function(req, res){
-  res.render('login.handlebars');
+  res.render('login.handlebars', {layout:'layout2'});
 }
 
 exports.newStory = function(req, res){
-    var loggedin;
+    var loggedout;
     if (typeof(req.session.loggedIn) == 'undefined'){
-        loggedin = true;
+        loggedout = true;
     }else{
-        loggedin = false;
+        loggedout = false;
     }
     
     if(req.session.loggedIn !== true){
         console.log("Logged In :" + req.session.loggedIn);
         res.redirect('/login');
     }else{
-        res.render('new-story.handlebars', {loggedin:loggedin});
+        res.render('new-story.handlebars', {loggedout:loggedout});
     }
 
 }

@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({secret:"Akhil",resave: false, saveUninitialized: false}));
 
 var hbs = exphbs.create({
+    defaultLayout:'layout1',
     helpers: { }
 });
 //define helper END

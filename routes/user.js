@@ -9,8 +9,9 @@ exports.logout = function(req,res){
     console.log("Logging  Out :"+req.session.username);
     var loggedOutUser=req.session.username;
     req.session.destroy();
+        
     console.log("Logged Out :"+loggedOutUser);
-    res.render('logout',{loggedOutUser:loggedOutUser});
+    res.render('logout',{loggedOutUser:loggedOutUser, loggedout: true});
 }
 
 
@@ -39,30 +40,32 @@ exports.doCreate = function(req,res){
 
 
 exports.login = function(req,res){
-    var email=req.body.email;
-    var password=req.body.password;
+    var email = req.body.email;
+    var password = req.body.password;
 
     User.findOne({email:email}, function(err,user){
-      console.log("User "+user);
-      if(user==null){
+      console.log("Login attempted by User " + user);
+      if(user == null){
         console.log("User is null redirecting to login");
-        var message="Invalid email or password";
+        var message = "Invalid email or password";
         console.log("Message :"+message);
         res.render("login", {errorMessage: message});
         return;
       }
 
-     user.comparePassword(password,function(err,isMatch){
-       if(isMatch && isMatch==true){
+     user.comparePassword(password, function(err, isMatch){
+       if(isMatch && isMatch == true){
          console.log("Authentication Sucessfull");
-         req.session.username=user.username;
-         req.session.loggedIn=true;
-         console.log("Got User : "+req.session.username);
-         res.render("new-story",{session:req.session});
+         req.session.username = user.username;
+         req.session.loggedIn = true;
+         console.log("Got User : " + req.session.username);
+         //res.render("new-story", {session:req.session});
+
+        res.render('index.handlebars', {loggedout:false});
        }else{
          console.log("Authentication UnSucessfull");
          var message="Invalid email or password";
-         console.log("Message :"+message);
+         console.log("Message :" + message);
          res.render("login", {errorMessage:message});
          return;
        }

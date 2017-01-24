@@ -12,26 +12,18 @@
             <img class="img-circle" src="/images/logo.png"/>
             </div>
             <br/>
-
-            <li>
-             <a class="menus" align="center" href="/stories">Stories</a>
-            </li>
-            <li>
-             <a class="menus" align="center" href="/new-story">Share your own story</a>
-            </li>
-            <li>
-             <a class="menus" align="center" href="/techStack">Tech stack</a>
-            </li>
-
-            <br/><br/><br/>
-            {{#if loggedin }}
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <a type="button" href="/login" class="btn btn-primary btn-lg outline">Login</a>&nbsp;&nbsp;&nbsp;
-             <a type="button" href="/register" class="btn btn-danger btn-lg outline">Sign Up</a>
+            <li><a class="menus" align="center" href="/stories">Stories</a></li>
+            <li><a class="menus" align="center" href="/new-story">Share your own story</a></li>
+            <li><a class="menus" align="center" href="/techStack">Tech stack</a></li>
+            <br>
+            {{#if loggedout }}
+            <div align="center">
+             <a type="button" href="/login" class="btn btn-primary  outline">Login</a>&nbsp;&nbsp;&nbsp;
+             <a type="button" href="/register" class="btn btn-danger  outline">Register</a>
             </div>
             {{else}}
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <a type="button" align="center" href="/logout" class="btn btn-danger btn-lg outline">Logout</a>&nbsp;&nbsp;&nbsp;
+            <div align="center">
+             <a type="button" align="center" href="/logout" class="btn btn-danger outline">Logout</a>&nbsp;&nbsp;&nbsp;
             </div>
             {{/if}}
     </ul>
