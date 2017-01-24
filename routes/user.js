@@ -44,7 +44,7 @@ exports.login = function(req,res){
     var password = req.body.password;
 
     User.findOne({email:email}, function(err,user){
-      console.log("Login attempted by User " + user);
+      console.log("Login attempted by User [%s]", user.username);
       if(user == null){
         console.log("User is null redirecting to login");
         var message = "Invalid email or password";
@@ -58,9 +58,7 @@ exports.login = function(req,res){
          console.log("Authentication Sucessfull");
          req.session.username = user.username;
          req.session.loggedIn = true;
-         console.log("Got User : " + req.session.username);
          //res.render("new-story", {session:req.session});
-
         res.render('index.handlebars', {loggedout:false});
        }else{
          console.log("Authentication UnSucessfull");

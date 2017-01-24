@@ -8,10 +8,16 @@
     font-size: 25px;
 }
 
+.brandFontLarge{
+    font-family: kaushan-script, cursive;
+    font-size: 35px;
+    color: #FFC300
+}
+
 .mainLines{
     font-size:30px;
 }
 
 .menus{
-    font-size:18px;
+    font-size:20px;
 }
